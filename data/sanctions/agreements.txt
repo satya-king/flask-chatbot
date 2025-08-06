@@ -1,0 +1,33 @@
+What is an Agreement in Government Projects?
+An Agreement is a formal contract between the government and a contractor or agency, executed after finalizing the bid/tender, defining the terms for execution of work.
+
+When is an Agreement signed?
+- After getting both AS and TS
+- After finalizing tender and issuing LOA (Letter of Acceptance)
+
+Contents of an Agreement
+- Agreement Number & Date
+- Names of Government & Contractor
+- Description of Work
+- Contract Value
+- Start and End Date
+- Penalty Clauses
+- Escalation Conditions
+- Payment Schedule
+- Tender Conditions
+
+Example
+Agreement No.: AGMT/2025/EDU/102
+Work: Renovation of Government Junior College
+Value: ₹48 Lakhs
+Contractor: M/s ABC Constructions
+Signed On: 12-Aug-2025
+Time Period: 6 months
+
+Exceptions / Test Cases
+Scenario: Agreement signed before AS
+Response: Irregular and invalid
+Scenario: Contractor fails to execute work
+Response: As per agreement, penalties apply
+Scenario: Delay in agreement after LOA
+Response: Work cannot start without agreement

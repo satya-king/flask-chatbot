@@ -1,0 +1,7 @@
+The loan application process in our organization follows a strict three-tier approval system:
+
+1. Maker: Responsible for entering all loan data into the system.
+2. Checker: Reviews the data entered by the Maker and verifies for accuracy.
+3. Approver: Gives final approval based on eligibility and available budget.
+
+A loan cannot move to the next stage until the current stage is successfully completed. Each role has their own dashboard to track and manage loan entries.

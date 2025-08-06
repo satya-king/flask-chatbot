@@ -1,0 +1,37 @@
+What is Administrative Sanction (AS)?
+Administrative Sanction (AS) is the formal approval issued by a competent authority in a government department to begin a public project or expenditure. It confirms that the proposal aligns with policy objectives, is justified, and can be taken up subject to funds availability.
+
+When is AS issued?
+AS is issued before any financial or technical process starts. It is the first official step in the government project lifecycle.
+
+Contents of an Administrative Sanction Order
+- Project Title
+- Justification / Purpose
+- Estimated Cost
+- Funding Source (e.g., scheme name, grant)
+- Administrative Sanction Number & Date
+- Approving Authority
+- Execution Department
+- Specific Conditions (if any)
+
+Who issues AS?
+It is issued by competent authorities like:
+- District Collectors
+- Department Secretaries
+- Commissioners
+- Any officer with powers delegated under G.O.s
+
+Example
+Project: Construction of ZP High School Building
+Estimated Cost: ₹75 Lakhs
+AS No.: AS/2025/EDN/045
+Date: 03-Aug-2025
+Authority: District Educational Officer
+
+Exceptions / Test Cases
+Scenario: Work started without AS
+Response: Irregular. Post-facto AS may be needed.
+Scenario: AS approved but cost increases
+Response: Revised AS (Re-AS) required
+Scenario: AS issued, but project later cancelled
+Response: AS should be withdrawn by authority

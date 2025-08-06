@@ -1,0 +1,7 @@
+The organization provides 12 casual leaves and 8 earned leaves per year.
+
+- Casual leaves cannot be carried forward to the next year.
+- Earned leaves can be carried forward for up to 3 years.
+- All leaves must be applied via the internal leave management system and approved by the reporting manager.
+
+Emergency leaves can be applied via email and later updated in the system manually.

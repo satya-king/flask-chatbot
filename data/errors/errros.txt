@@ -1,0 +1,19 @@
+Error: TS not found with given TS number
+Description: This occurs when the provided Treasury Serial (TS) number does not exist in the system.
+Cause: The TS number might be incorrect, expired, or not yet entered into the system.
+
+Error: Unable to process, TS is cancelled
+Description: This occurs when the TS is already cancelled but a request is being raised for it.
+Cause: The request is invalid for a cancelled TS.
+
+Error: Unable to process, TS  in Draft
+Description: This occurs when the TS is still in Draft status when a request is being raised.
+Cause: Only approved TS entries are valid for processing.
+
+Error: Unable to process, TS is not approved
+Description: This occurs when the TS is not in Approved status.
+Cause: A TS must be approved before further processing.
+
+Error: TS approved details not found
+Description: The system cannot find the approver details for the approved TS.
+Cause: Data might be missing or not updated in the approval system.

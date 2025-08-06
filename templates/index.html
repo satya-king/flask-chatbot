@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Satya Chatbot</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #000;
+            --container-bg: #fff;
+            --chatbox-bg: #fafafa;
+            --user-bg: #d1e7dd;
+            --bot-bg: #f8d7da;
+            --border-color: #ccc;
+        }
+
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --container-bg: #1e1e1e;
+            --chatbox-bg: #2a2a2a;
+            --user-bg: #2d6a4f;
+            --bot-bg: #9a031e;
+            --border-color: #444;
+            --source-color: #a5a4a4;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        #chat-container {
+            width: 800px;
+            margin: 40px auto;
+            background: var(--container-bg);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        #chat-box {
+            height: 450px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            background: var(--chatbox-bg);
+            margin-bottom: 15px;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 6px;
+            max-width: 50%;
+            word-wrap: break-word;
+            transition: background 0.3s ease;
+        }
+
+        .user {
+            background-color: var(--user-bg);
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .bot {
+            background-color: var(--bot-bg);
+            text-align: left;
+            margin-right: auto;
+        }
+
+        .typing {
+            font-style: italic;
+            color: gray;
+        }
+
+        .message.bot {
+            position: relative;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            max-width: 80%;
+            align-self: flex-start;
+        }
+
+        .message-content {
+            font-size: 16px;
+        }
+
+        .source {
+            font-size: 12px;
+            color: var(--source-color);
+            text-align: right;
+            margin-top: 5px;
+        }
+
+
+        #input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            background: var(--chatbox-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        #send-btn,
+        #clear-btn,
+        #theme-toggle-btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        #send-btn {
+            background-color: #0d6efd;
+        }
+
+        #clear-btn {
+            background-color: crimson;
+        }
+
+        #theme-toggle-btn {
+            background-color: #6c757d;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="chat-container">
+        <button id="theme-toggle">🌙 Dark Mode</button>
+        <div style="clear: both;"></div>
+
+        <div id="chat-box"></div>
+
+        <div id="input-area">
+            <input type="text" id="user-input" placeholder="Type your message..." />
+            <button id="send-btn">Send</button>
+            <button id="clear-btn">Clear</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        function applyTheme(theme) {
+            document.body.classList.toggle("dark-mode", theme === "dark");
+            themeToggleBtn.textContent = theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+            localStorage.setItem("theme", theme);
+        }
+
+        window.onload = () => {
+            const savedTheme = localStorage.getItem("theme") || "light";
+            applyTheme(savedTheme);
+
+            const chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+            chatHistory.forEach(({ message, type }) => {
+                addMessage(message, type, false);
+            });
+        };
+
+        themeToggleBtn.onclick = () => {
+            const currentTheme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            applyTheme(newTheme);
+        };
+
+        function addMessage(message, type, save = true, source = null) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', type);
+
+            if (type === 'bot' && source) {
+                const contentDiv = document.createElement('div');
+                contentDiv.classList.add('message-content');
+                contentDiv.innerText = message;
+
+                const sourceDiv = document.createElement('div');
+                sourceDiv.classList.add('source');
+                sourceDiv.innerText = `🔍 by ${source}`;
+
+                msgDiv.appendChild(contentDiv);
+                msgDiv.appendChild(sourceDiv);
+            } else {
+                msgDiv.innerText = message;
+            }
+
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            if (save) {
+                saveToHistory(message, type);
+            }
+        }
+
+
+        function saveToHistory(message, type) {
+            const chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+            chatHistory.push({ message, type });
+            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+        }
+
+        function clearChat() {
+            localStorage.removeItem('chatHistory');
+            chatBox.innerHTML = '';
+        }
+
+        sendBtn.onclick = async () => {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, 'user');
+            userInput.value = '';
+
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('message', 'bot', 'typing');
+            typingDiv.innerText = 'typing...';
+            chatBox.appendChild(typingDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            const chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+
+            const messages = [
+                ...chatHistory.map(({ message, type }) => ({
+                    role: type === 'user' ? 'user' : 'assistant',
+                    content: message
+                })),
+                { role: "user", content: message }
+            ];
+
+            const res = await fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages }),
+            });
+
+            const data = await res.json();
+
+            chatBox.removeChild(typingDiv);
+            addMessage(data.reply, 'bot', true, data.source);
+        };
+
+
+        clearBtn.onclick = () => {
+            if (confirm("Are you sure you want to clear the chat?")) {
+                clearChat();
+            }
+        };
+
+        userInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                sendBtn.click();
+            }
+        });
+    </script>
+</body>
+
+</html>

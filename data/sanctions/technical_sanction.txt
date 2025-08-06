@@ -1,0 +1,34 @@
+What is Technical Sanction (TS)?
+Technical Sanction (TS) is the approval of the technical design, specifications, and cost estimates of a public work. It confirms that the project is technically sound, feasible, and the cost is reasonable.
+
+When is TS issued?
+TS is issued after Administrative Sanction and before tendering or execution of the work.
+
+Contents of Technical Sanction Document
+- Detailed Estimate (DPR)
+- Abstract Estimate
+- Drawings and Technical Specifications
+- Unit Rates Used
+- Approved Schedule of Rates (SOR)
+- TS Number and Date
+- Approving Engineer (e.g., EE, SE, CE)
+
+Who gives TS?
+- Assistant Engineer (AE): for small works
+- Executive Engineer (EE): for medium-level works
+- Superintending Engineer (SE) or Chief Engineer (CE): for major works
+
+Example
+Work: Construction of Rural Water Tank
+Cost: ₹22 Lakhs
+TS No.: TS/2025/RWS/118
+Approving Authority: Executive Engineer
+SOR Used: SoR 2024-25 (Rural Water Supply Dept.)
+
+Exceptions / Test Cases
+Scenario: TS not taken
+Response: Work is technically unapproved, may lead to audit issues
+Scenario: TS taken at higher rate than SOR
+Response: Irregular; revision needed or justification required
+Scenario: SOR expired
+Response: Latest applicable SOR must be used

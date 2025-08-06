@@ -1,0 +1,8 @@
+Employee onboarding is handled through the HRMS system.
+
+The process involves:
+- Document submission (Aadhar, PAN, Bank details)
+- IT asset allocation
+- Email ID and system access provisioning
+
+Every new employee is assigned an onboarding coordinator who ensures all steps are completed in 7 working days. The onboarding status can be tracked from the HRMS dashboard.
