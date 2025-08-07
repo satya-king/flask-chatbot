@@ -13,10 +13,8 @@ rag_doc_embeddings = embedding_model.encode(rag_docs)
 
 
 db_examples = [
-    "what is the status of my loan",
+    "what is the status of my loan/application/request/TS/AS/Aggrement/GO/Mbook/billing",
     "is my application approved or pending",
-    "who is the checker assigned to this request",
-    "loan id 12345 is stuck"
 ]
 
 llm_examples = [
@@ -34,10 +32,7 @@ def classify_query(question: str) -> str:
     expanded_question = expand_abbreviations(question, abbreviation_map)
     query_embedding = embedding_model.encode([expanded_question])[0]
 
-    # 🔍 Compare with RAG docs
     rag_sim = cosine_similarity([query_embedding], rag_doc_embeddings).max()
-
-    # 🔍 Compare with db and llm
     db_sim = cosine_similarity([query_embedding], db_embeddings).max()
     llm_sim = cosine_similarity([query_embedding], llm_embeddings).max()
 

@@ -1,19 +1,86 @@
-Error: TS not found with given TS number
-Description: This occurs when the provided Treasury Serial (TS) number does not exist in the system.
-Cause: The TS number might be incorrect, expired, or not yet entered into the system.
+Error: TS not found with given ts number
+Description: If the provided TS number does not exist in the system.
 
 Error: Unable to process, TS is cancelled
-Description: This occurs when the TS is already cancelled but a request is being raised for it.
-Cause: The request is invalid for a cancelled TS.
+Description: If the TS is already cancelled but a request is being raised for it.
 
 Error: Unable to process, TS  in Draft
-Description: This occurs when the TS is still in Draft status when a request is being raised.
-Cause: Only approved TS entries are valid for processing.
+Description: If the TS is still in Draft status when a request is being raised.
 
 Error: Unable to process, TS is not approved
-Description: This occurs when the TS is not in Approved status.
-Cause: A TS must be approved before further processing.
+Description: If the TS is not in Approved status.
 
 Error: TS approved details not found
-Description: The system cannot find the approver details for the approved TS.
-Cause: Data might be missing or not updated in the approval system.
+Description: If the system cannot find the approver details for the approved TS.
+
+Error: TS approved position not found
+Description: If the system cannot find the approved position for the approved TS.
+
+Error: DDO data not mapped
+Description: If the logged-in DDO is not mapped in the system.
+
+Error: The following DDO office not having authority to create request
+Description: If the logged-in DDO  is not in under the approver organization.
+
+Error: The following position not having authority to create request
+Description: If the logged-in position is not exists in mapped organization as org head.
+
+Error: AS(AsNo) in draft/In-process
+Description: If the TS is mapped to an AS (Administrative Sanction) that is still in Draft or In-Process status.
+
+Error: Request(reqNo) already submitted with this TS no( tsNo)
+Description: If a request has already been submitted with the same TS number and is in process.
+
+Error: works ddo details not found for this TS no
+Description: If the work mapped to this TS does not have DDO and HOA details defined.
+
+Error: Unable to process, Bills are in draft/In-process
+Description: If any bills have already been generated using this TS.
+
+Error: Agreements(AgNo ) are in draft/In-process
+Description: If the TS is linked to an Agreement that is still in Draft or In-Process status.
+
+Error: Unable to process, The following Mbook Id's (MbookNo  ) are in draft/In-process
+Description: If the MBooks linked to the TS's Agreement are in Draft or In-Process status.
+
+Error: Final Bill's Exists for this TS
+Description: If final bills have already been generated using this TS.
+
+Error: DDO (ddocode  )  should be under TS executing department(departName)
+Description: If the changed DDO is not present under TS executing department.
+
+Error: DDO and HOA combination already mapped with this change DDo(ddocode) in TS
+Description: If the changed DDO and HOA combination is already mapped in the TS.
+
+Error: DDO (ddocode)and HOA(hoa) mapping not exist
+Description: If the changed DDO code and the TS's existing HOA are not mapped in the system.
+
+Error: TS Maker position not exist
+Description: If the new TS maker's position is not found in the system.
+
+Error: TS maker Position should be under this DDO (Change ddocode ) only.
+Description: If the TS maker is not under the changed DDO.
+
+Error: Unable to process, TS Work flow not assigned this position ID
+Description: If the selected TS maker position is not assigned in the TS workflow.
+
+Error: Agreement Maker position not exist
+Description: If the new Agreement maker’s position is not found in the system.
+
+Error: Agreement Details not found
+Description: If Agreement data is not found in the system.
+
+Error: Agreement maker Position should be under this DDO (Change ddocode) only.
+Description: If the Agreement maker is not present in the changed DDO.
+
+Error: Agreement maker Position should be under TS Executing Department only.
+Description: If the Agreement maker is not present in the TS’s executing department.
+
+Error: Unable to process, Agreement Work flow not assigned this position ID:
+Description: If the selected Agreement maker is not configured in the Agreement workflow.
+
+Error: Approved authority not found
+Description: If the SE or ENC mapped to the current DDO and EE combination does not have a head of department assigned.
+
+Error: Unable to submit, there is no change in DDO CODE
+Description: If the changed DDO code is the same as the existing one.
